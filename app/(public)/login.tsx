@@ -13,12 +13,7 @@ import ButtonCustom from '@components/shared/button';
 import DismissKeyboardHOC from '@components/shared/dismiss-keyboard-HOC';
 import InputText from '@components/shared/input-text';
 import Logo from '@components/shared/logo';
-import {
-  LOGIN_APPLE_KEY,
-  LOGIN_GOOGLE_KEY,
-  LOGIN_ID_TOKEN_KEY,
-  LOGIN_KEY,
-} from '@constants/reactAPI';
+import QKeys from '@constants/reactAPI';
 import { Routes } from '@constants/routes';
 import { LoginSchema } from '@customTypes/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -73,7 +68,7 @@ const Login = () => {
 
   const loginMutation = useMutation<UserType, Error, LoginType>({
     networkMode: 'always',
-    mutationKey: [LOGIN_KEY],
+    mutationKey: [QKeys.LOGIN_KEY],
     mutationFn: async (data) => {
       const response = await DataRepo.userService.signinWithEmailAndPassword(
         data.email,
@@ -101,7 +96,7 @@ const Login = () => {
 
   const loginGoogleMutation = useMutation<UserType, Error>({
     networkMode: 'always',
-    mutationKey: [LOGIN_GOOGLE_KEY],
+    mutationKey: [QKeys.LOGIN_GOOGLE_KEY],
     mutationFn: async () => {
       const response = await DataRepo.userService.signinWithGoogle();
       queryClient.clear();
@@ -126,7 +121,7 @@ const Login = () => {
 
   const loginAppleMutation = useMutation<UserType | null, Error>({
     networkMode: 'always',
-    mutationKey: [LOGIN_APPLE_KEY],
+    mutationKey: [QKeys.LOGIN_APPLE_KEY],
     mutationFn: async () => {
       const response = await DataRepo.userService.signinWithApple();
       queryClient.clear();
@@ -151,7 +146,7 @@ const Login = () => {
 
   const loginIdTokenMutation = useMutation<UserType, Error>({
     networkMode: 'always',
-    mutationKey: [LOGIN_ID_TOKEN_KEY],
+    mutationKey: [QKeys.LOGIN_ID_TOKEN_KEY],
     mutationFn: async () => {
       const response = await DataRepo.userService.signInWithLocalAuth();
       queryClient.clear();

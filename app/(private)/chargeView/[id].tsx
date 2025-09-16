@@ -14,7 +14,7 @@ import GradientList from '@components/shared/gradient-list';
 import LoaderText from '@components/shared/loader-text';
 import PopOver from '@components/shared/pop-over';
 import Searcher from '@components/shared/searcher';
-import { GET_CHARGE_KEY, GET_CHARGE_SCHEDULE_KEY } from '@constants/reactAPI';
+import QKeys from '@constants/reactAPI';
 import { Routes } from '@constants/routes';
 import { useDebounceState } from '@hooks/input';
 import ChargeScheduler from '@model/Charge';

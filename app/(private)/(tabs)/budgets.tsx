@@ -19,14 +19,7 @@ import FlatGradientList from '@components/shared/flat-gradient-list';
 import FloatingButtons from '@components/shared/floating-buttons';
 import LoaderText from '@components/shared/loader-text';
 import TabBatLiquid from '@components/shared/tab-bar-liquid-glass';
-import {
-  BUDGETS_ENTITY,
-  BUDGET_ENTITY,
-  EVENTS_ENTITY,
-  EVENT_ENTITY,
-  LIST_BUDGET_KEY,
-  SCHEDULE_ENTITY,
-} from '@constants/reactAPI';
+import QKeys from '@constants/reactAPI';
 import { Routes } from '@constants/routes';
 import { useAppStore } from '@store/index';
 import { CalendarPlus } from '@tamagui/lucide-icons';
@@ -54,7 +47,7 @@ const Budgets = () => {
 
   const budgetsQuery = useQuery<Array<BudgetBaseType>, Error>({
     networkMode: 'always',
-    queryKey: [LIST_BUDGET_KEY],
+    queryKey: [QKeys.LIST_BUDGET_KEY],
     queryFn: async () => await DataRepo.budgetsService.getBudgets(),
   });
 
@@ -64,7 +57,7 @@ const Budgets = () => {
 
       await queryClient.invalidateQueries({
         refetchType: 'all',
-        queryKey: [LIST_BUDGET_KEY],
+        queryKey: [QKeys.LIST_BUDGET_KEY],
       });
 
       return response;
@@ -185,11 +178,11 @@ const Budgets = () => {
                     refetchType: 'all',
                     predicate: (query) =>
                       [
-                        BUDGET_ENTITY,
-                        BUDGETS_ENTITY,
-                        EVENT_ENTITY,
-                        EVENTS_ENTITY,
-                        SCHEDULE_ENTITY,
+                        QKeys.BUDGET_ENTITY,
+                        QKeys.BUDGETS_ENTITY,
+                        QKeys.EVENT_ENTITY,
+                        QKeys.EVENTS_ENTITY,
+                        QKeys.SCHEDULE_ENTITY,
                       ].some((e) => (query.queryKey[0] as string).includes(e)),
                   })
                   .finally(() => {

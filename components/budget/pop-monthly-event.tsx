@@ -5,17 +5,10 @@ import React from 'react';
 
 import DataRepo from '@api/datasource';
 import ButtonCustom from '@components/shared/button';
-import {
-  GET_BUDGET_KEY,
-  GET_SCHEDULE_KEY,
-  UPDATE_EVENT_BALANCE_KEY,
-  UPDATE_EVENT_KEY,
-} from '@constants/reactAPI';
+import QKeys from '@constants/reactAPI';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { isCompletedByDates } from '@utils/budget';
 import { Logger } from '@utils/log';
-
-
 
 import { EventDetail } from './event';
 
@@ -41,7 +34,7 @@ const MonthlyEvent = (props: PopMonthlyEventProps) => {
     Error,
     ToggleCompletedEventParamsType
   >({
-    mutationKey: [UPDATE_EVENT_KEY, event.id],
+    mutationKey: [QKeys.UPDATE_EVENT_KEY, event.id],
     mutationFn: async (params) => {
       const response =
         await DataRepo.budgetsService.toggleEventCompleted(params);
@@ -49,7 +42,7 @@ const MonthlyEvent = (props: PopMonthlyEventProps) => {
       queryClient.invalidateQueries({
         refetchType: 'all',
         predicate: (query) =>
-          [GET_SCHEDULE_KEY, GET_BUDGET_KEY].includes(
+          [QKeys.GET_SCHEDULE_KEY, QKeys.GET_BUDGET_KEY].includes(
             query.queryKey[0] as string
           ),
       });
@@ -78,14 +71,14 @@ const MonthlyEvent = (props: PopMonthlyEventProps) => {
     Error,
     ToggleCompletedEventParamsType
   >({
-    mutationKey: [UPDATE_EVENT_BALANCE_KEY, event.id],
+    mutationKey: [QKeys.UPDATE_EVENT_BALANCE_KEY, event.id],
     mutationFn: async (params) => {
       const response = await DataRepo.budgetsService.toggleEventBalance(params);
 
       queryClient.invalidateQueries({
         refetchType: 'all',
         predicate: (query) =>
-          [GET_SCHEDULE_KEY, GET_BUDGET_KEY].includes(
+          [QKeys.GET_SCHEDULE_KEY, QKeys.GET_BUDGET_KEY].includes(
             query.queryKey[0] as string
           ),
       });

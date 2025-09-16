@@ -5,12 +5,10 @@ import React from 'react';
 
 import DataRepo from '@api/datasource';
 import ButtonCustom from '@components/shared/button';
-import { GET_BUDGET_KEY, GET_SCHEDULE_KEY } from '@constants/reactAPI';
+import QKeys from '@constants/reactAPI';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Logger } from '@utils/log';
 import { isLoadingMutation } from '@utils/network';
-
-
 
 import type {
   BulkToggleCompletedEventParamsType,
@@ -42,7 +40,7 @@ const PopBulk = (props: PopBulkProps) => {
       queryClient.invalidateQueries({
         refetchType: 'all',
         predicate: (query) =>
-          [GET_SCHEDULE_KEY, GET_BUDGET_KEY].includes(
+          [QKeys.GET_SCHEDULE_KEY, QKeys.GET_BUDGET_KEY].includes(
             query.queryKey[0] as string
           ),
       });
