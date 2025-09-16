@@ -1,0 +1,19 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit",
+    "source.sortMembers": "explicit"
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.options": {
+    "cache": true,
+    "cacheLocation": ".eslintcache"
+  }
+  // "typescript.preferences.includePackageJsonAutoImports": "off",
+  // "typescript.suggest.autoImports": false
+}

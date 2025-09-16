@@ -1,0 +1,9 @@
+{
+  "platforms": ["ios", "android"],
+  "ios": {
+    "modules": ["AppStoreUpdateModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.appstoreupdate.AppStoreUpdateModule"]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "baseUrl": "./",
+
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
+    "paths": {
+      "@modules/*": ["modules/*"],
+      "@api/*": ["api/*"],
+      "@config/*": ["config/*"],
+      "@components/*": ["components/*"],
+      "@constants/*": ["constants/*"],
+      "@assets/*": ["assets/*"],
+      "@hooks/*": ["hooks/*"],
+      "@model/*": ["model/*"],
+      "@store/*": ["store/*"],
+      "@customTypes/*": ["types/*"],
+      "@utils/*": ["utils/*"],
+      "@datasource/*": ["api/datasource/*"],
+      "@decorators/*": ["decorators/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["android", "ios"]
+}
