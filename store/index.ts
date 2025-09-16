@@ -21,6 +21,8 @@ type UserSlice = {
   activeTimestamp: number | null;
   backgroundTimestamp: number | null;
   notificationSettings: NotificationPermissionsStatus | null;
+  tokenExpired: boolean;
+  tokenSentAt?: number;
   // actions
   clear: () => void;
   setRequiredBiometric: (requiredBiometric: boolean) => void;
@@ -32,6 +34,8 @@ type UserSlice = {
   setNotificationSettings: (
     notificationSettings: NotificationPermissionsStatus | null
   ) => void;
+  setTokenExpired: (tokenExpired: boolean) => void;
+  setTokenSentAt: (tokenSentAt?: number) => void;
 };
 
 type BudgetSlice = {
@@ -51,6 +55,8 @@ const initialUserSlice = {
   backgroundTimestamp: null,
   notificationSettings: null,
   currency: CurrencyOptions[0],
+  tokenExpired: false,
+  tokenSentAt: undefined,
 };
 
 const initialBudgetSlice = {};
@@ -83,10 +89,13 @@ export const useAppStore = create(
           ...initialBudgetSlice,
           theme: state.theme,
         })),
+
+      setTokenExpired: (tokenExpired) => set({ tokenExpired }),
+      setTokenSentAt: (tokenSentAt) => set({ tokenSentAt }),
     }),
     {
-      version: 6,
-      name: 'app-budgetfy-store',
+      version: 1,
+      name: 'app-songfy-store',
       storage: createJSONStorage(() => AsyncStorage),
     }
   )

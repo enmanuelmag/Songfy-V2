@@ -1,3 +1,5 @@
+import * as Burnt from 'burnt';
+
 import React from 'react';
 
 import * as Notifications from 'expo-notifications';
@@ -13,6 +15,7 @@ import { Logger } from './log';
 
 import type { EventBaseType } from '@customTypes/budget';
 import type { ChargeType } from '@customTypes/charges';
+import type { BaseToastOptions } from 'burnt/build/types';
 
 export const cancelNotification = async (id: string) => {
   await Notifications.cancelScheduledNotificationAsync(id);
@@ -124,3 +127,25 @@ export async function scheduleNotification(params: NotificationParams) {
     }
   }
 }
+
+export const toast = (params: BaseToastOptions) => {
+  let haptic: BaseToastOptions['haptic'];
+
+  if (params.preset) {
+    switch (params.preset) {
+      case 'done':
+        haptic = 'success';
+        break;
+      case 'error':
+        haptic = 'error';
+        break;
+      default:
+        break;
+    }
+  }
+
+  Burnt.toast({
+    ...params,
+    haptic,
+  });
+};
