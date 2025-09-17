@@ -19,7 +19,7 @@ import FlatGradientList from '@components/shared/flat-gradient-list';
 import FloatingButtons from '@components/shared/floating-buttons';
 import LoaderText from '@components/shared/loader-text';
 import TabBatLiquid from '@components/shared/tab-bar-liquid-glass';
-import QKeys from '@constants/reactAPI';
+import QKeys from '@constants/react-api';
 import { Routes } from '@constants/routes';
 import { useAppStore } from '@store/index';
 import { CalendarPlus } from '@tamagui/lucide-icons';

@@ -16,7 +16,6 @@ import queryClient from '@api/datasource/query';
 import AlertDialog from '@components/shared/dialog';
 import { useStackScreenOptions } from '@config/screens';
 import { MIN_BIOMETRIC_TIME, MIN_CHECK_UPDATE_TIME } from '@constants/app';
-import QKeys from '@constants/reactAPI';
 import { Routes } from '@constants/routes';
 import { ProductID, openAppStore } from '@modules/app-store-update';
 import { useAppStore } from '@store/index';
