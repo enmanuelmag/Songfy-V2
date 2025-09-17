@@ -47,13 +47,17 @@ export const useStackScreenOptions = (
 type TabScreenParams = {
   title: string;
   headerTitle?: React.ReactElement;
+  headerRight?: React.ReactElement;
+  headerLeft?: React.ReactElement;
   Icon: any;
+  sizeIcon?: number;
 };
 
 export const useTabsScreenOptions = (
   params: TabScreenParams
 ): ScreenProps['options'] => {
-  const { title, Icon, headerTitle } = params;
+  const { title, Icon, sizeIcon, headerTitle, headerRight, headerLeft } =
+    params;
 
   const { theme } = useAppStore();
   const colorBg = getBgColor(theme);
@@ -68,8 +72,10 @@ export const useTabsScreenOptions = (
     headerStyle: { backgroundColor: colorBg },
     contentStyle: { backgroundColor: colorBg },
     headerTitle: () => headerTitle,
+    headerLeft: headerLeft ? () => headerLeft : undefined,
+    headerRight: headerRight ? () => headerRight : undefined,
     tabBarIcon: ({ color }: { color: string }) => (
-      <Icon color={color} size={24} />
+      <Icon color={color} size={sizeIcon || 24} />
     ),
   };
 };
