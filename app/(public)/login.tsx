@@ -13,7 +13,7 @@ import ButtonCustom from '@components/shared/button';
 import DismissKeyboardHOC from '@components/shared/dismiss-keyboard-HOC';
 import InputText from '@components/shared/input-text';
 import Logo from '@components/shared/logo';
-import QKeys from '@constants/reactAPI';
+import QKeys from '@constants/react-api';
 import { Routes } from '@constants/routes';
 import { LoginSchema } from '@customTypes/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -88,7 +88,7 @@ const Login = () => {
       if (userData) {
         setUser(userData);
         navigate({
-          to: Routes.BUDGETS,
+          to: Routes.SEARCH,
         });
       }
     },
@@ -113,7 +113,7 @@ const Login = () => {
       if (userData) {
         setUser(userData);
         navigate({
-          to: Routes.BUDGETS,
+          to: Routes.SEARCH,
         });
       }
     },
@@ -138,7 +138,7 @@ const Login = () => {
       if (userData) {
         setUser(userData);
         navigate({
-          to: Routes.BUDGETS,
+          to: Routes.SEARCH,
         });
       }
     },
@@ -163,7 +163,7 @@ const Login = () => {
       if (userData) {
         setUser(userData);
         navigate({
-          to: Routes.BUDGETS,
+          to: Routes.SEARCH,
         });
       }
     },
@@ -186,7 +186,7 @@ const Login = () => {
     <DismissKeyboardHOC>
       <YStack height="100%" justify="center">
         <YStack gap="$4" justify="center" p="$6">
-          <Logo colored="fy" normal="Budget" size="$9" />
+          <Logo colored="fy" normal="Song" size="$9" />
 
           <YStack>
             <Controller
