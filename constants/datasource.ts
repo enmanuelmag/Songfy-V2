@@ -30,3 +30,5 @@ export const DEBTORS_COLLECTION = 'debtors-v3';
 export const PAYMENTS_COLLECTION = 'payments-v3';
 
 export const USERS_COLLECTION = 'users-v3';
+
+export const SPOTIFY_AUTH = 'spotify-auth';
