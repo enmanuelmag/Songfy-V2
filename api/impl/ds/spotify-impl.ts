@@ -11,7 +11,7 @@ import * as WebBrowser from 'expo-web-browser';
 import queryClient from '@api/datasource/query';
 import SpotifyDS from '@api/domain/ds/spotify-ds';
 import { SPOTIFY_AUTH } from '@constants/datasource';
-import QKeys from '@constants/reactAPI';
+import QKeys from '@constants/react-api';
 import { PlaylistResponseRawSchema, SongSchema } from '@customTypes/spotify';
 import { Logger } from '@utils/log';
 
@@ -86,6 +86,7 @@ class SpotifyAuthExternal extends SpotifyDS {
         url: result.url!,
       });
 
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       if (response?.type !== 'success') {
         Logger.error('Error authorizing Spotify', response);
         // throw ErrorService.getErrorFromCode(ErrorCodes.ERROR_AUTHORIZING);
