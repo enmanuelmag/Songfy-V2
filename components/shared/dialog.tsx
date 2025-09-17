@@ -11,12 +11,12 @@ type AlertTamaProps = {
   title: string;
   children?: React.ReactNode;
   content: string | React.ReactNode;
-  textConfirm: string;
+  textConfirm?: string;
   colorConfirm?: keyof typeof colors;
-  textCancel: string;
+  textCancel?: string;
   colorCancel?: keyof typeof colors;
-  onConfirm: () => void;
-  onCancel: () => void;
+  onConfirm?: () => void;
+  onCancel?: () => void;
   onOpenChange?: (boolean: boolean) => void;
 };
 
@@ -92,24 +92,26 @@ export function AlertDialog(props: AlertTamaProps) {
               )}
             </AlertTama.Description>
 
-            <XStack gap="$3" justify="flex-end">
-              <AlertTama.Action asChild>
-                <ButtonCustom
-                  color={colorConfirm || 'green'}
-                  fullWidth={false}
-                  text={textConfirm}
-                  onPress={onConfirm}
-                />
-              </AlertTama.Action>
-              <AlertTama.Cancel asChild>
-                <ButtonCustom
-                  color={colorCancel || 'red'}
-                  fullWidth={false}
-                  text={textCancel}
-                  onPress={onCancel}
-                />
-              </AlertTama.Cancel>
-            </XStack>
+            {textConfirm && textCancel && (
+              <XStack gap="$3" justify="flex-end">
+                <AlertTama.Action asChild>
+                  <ButtonCustom
+                    color={colorConfirm || 'green'}
+                    fullWidth={false}
+                    text={textConfirm}
+                    onPress={onConfirm}
+                  />
+                </AlertTama.Action>
+                <AlertTama.Cancel asChild>
+                  <ButtonCustom
+                    color={colorCancel || 'red'}
+                    fullWidth={false}
+                    text={textCancel}
+                    onPress={onCancel}
+                  />
+                </AlertTama.Cancel>
+              </XStack>
+            )}
           </YStack>
         </AlertTama.Content>
       </AlertTama.Portal>

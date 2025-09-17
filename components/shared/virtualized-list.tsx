@@ -12,10 +12,14 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useAppStore } from '@store/index';
 import { getScrollGradient } from '@utils/platform';
 
+import LoaderText from './loader-text';
+
 type VirtualizedListProps = {
   items: Array<any>;
   bottomGradientClass?: string;
   initialNumToRender?: number;
+  loading?: boolean;
+  loadingText?: string;
   renderItem: (props: { item: any; index: number }) => React.ReactElement;
 };
 
@@ -25,7 +29,13 @@ type GradientType = {
 };
 
 const VirtualizedList = (props: VirtualizedListProps) => {
-  const { items, initialNumToRender = 3, renderItem } = props;
+  const {
+    items,
+    initialNumToRender = 3,
+    renderItem,
+    loading,
+    loadingText,
+  } = props;
 
   const { theme } = useAppStore();
 
@@ -33,6 +43,14 @@ const VirtualizedList = (props: VirtualizedListProps) => {
     top: false,
     bottom: false,
   });
+
+  if (loading) {
+    return (
+      <View flex={1} items="center" justify="center">
+        <LoaderText text={loadingText || 'Loading'} />
+      </View>
+    );
+  }
 
   return (
     <React.Fragment>
